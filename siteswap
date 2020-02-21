@@ -1,0 +1,49 @@
+print("test je sitewap?")
+siteswap = input()
+def is_dit_een_sitswap(test):
+  site = 3 * test
+  lijst_van_aftelling = []
+  plaats_getal = 0
+  afgetelde_str = ""
+  # lijst maken van de aftellende getallen met x als wacht
+  for getal in site:
+    afgetelde_str = plaats_getal * "x"
+    for i in range(int(getal) + 1):
+      afgetelde_str += str(int(getal) - i)
+    lijst_van_aftelling.append(afgetelde_str)
+    plaats_getal += 1
+  lijst_lengte = []
+  print(lijst_van_aftelling)
+  #lijst maken met de lengres van de timing.
+  for aftelling in lijst_van_aftelling:
+    lijst_lengte.append(len(aftelling))
+
+  #een zelfde lijst aanmaken zodat het de zelfde zou zijn als de lmijsten de zelfde zijn.
+  zelfde_lijst = []
+  lijst_lengte.sort()
+  kleinste_getal = min(lijst_lengte)
+  grootste_getal = max(lijst_lengte)
+  for i in range(kleinste_getal, grootste_getal + 1 ):
+    zelfde_lijst.append(i)
+  print(zelfde_lijst)
+  print(lijst_lengte)
+  return   zelfde_lijst ==  lijst_lengte
+
+def repeat(string):
+  l = len(string)
+  for i in range(1, len(string) // 2 + 1):
+    if l % i: continue
+    s = string[0:i]
+    if s * (l // i) == string:
+      return s
+    else:
+      return string
+
+
+print(is_dit_een_sitswap(siteswap))
+def brute_force():
+  for i in range(1000):
+    if is_dit_een_sitswap(str(i)):
+      print(repeat(str(i)))
+
+brute_force()
